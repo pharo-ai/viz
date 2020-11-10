@@ -3,8 +3,9 @@ Class {
 	#superclass : #MLRoassal2Viz,
 	#instVars : [
 		'labelConversionBlock',
-		'colorDictionary',
-		'numberOfTicks'
+		'numberOfTicks',
+		'colors',
+		'k'
 	],
 	#category : #'MLViz-Roassal2'
 }
@@ -13,7 +14,18 @@ Class {
 MLR2ScatterPlotViz class >> example01 [ 
 	<example>
 	
-	MLR2ScatterPlotViz plot: Datasets loadIris.
+	MLR2ScatterPlotViz 
+		plot: Datasets loadIris
+		k: 3
+]
+
+{ #category : #examples }
+MLR2ScatterPlotViz class >> example02 [
+	<example>
+	
+	MLR2ScatterPlotViz 
+		plot: Datasets loadIris 
+		k: 1
 ]
 
 { #category : #'instance creation' }
@@ -24,22 +36,48 @@ MLR2ScatterPlotViz class >> plot: aDataFrame [
 		plot
 ]
 
-{ #category : #accessing }
-MLR2ScatterPlotViz >> colorDictionary [
+{ #category : #'instance creation' }
+MLR2ScatterPlotViz class >> plot: aDataFrame k: predictedGroups [
 
-	^ colorDictionary
-		ifNil: [ colorDictionary := self defaultColorDictionary ]
+	^ self new
+		k: predictedGroups;
+		initializeWithDataFrame: aDataFrame;
+		plot
+]
+
+{ #category : #accessing }
+MLR2ScatterPlotViz >> colorAt: keyName [
+	" Answer a <Color> in the receiver's colors at keyName "
+
+	^ self colors at: keyName
+]
+
+{ #category : #accessing }
+MLR2ScatterPlotViz >> colors [
+	" Answer a <Collection> of receiver's k <Color> instances "
+
+	^ colors
+		ifNil: [ colors := self defaultColors ]
+]
+
+{ #category : #accessing }
+MLR2ScatterPlotViz >> colors: aCollection [ 
+	" Set the receiver's colors to be aCollection "
+
+	colors := aCollection
 ]
 
 { #category : #defaults }
-MLR2ScatterPlotViz >> defaultColorDictionary [
-	" Answer a <Dictionary> with defaults for the receiver's feature colors "
+MLR2ScatterPlotViz >> defaultColors [
+	" Answer a <Collection> with defaults for the receiver's feature colors "
 
-	^ Dictionary new
-		at: 'setosa' put: Color red;
-		at: 'versicolor' put: Color green;
-		at: 'virginica' put: Color blue; 
-		yourself.
+	^ k = 1 
+		ifTrue: [ (self dfClusterNames collect: [ : featureName | featureName -> Color black ]) asDictionary ]
+		ifFalse: [
+			(self dfClusterNames
+				with:  (Color wheel: self dfClusterNames size)
+				collect: [ : featureName : colorName | featureName -> colorName ]) asDictionary ].
+
 ]
 
 { #category : #defaults }
@@ -58,6 +96,13 @@ MLR2ScatterPlotViz >> defaultNumberOfTicks [
 	" Answer a <Number> with defaults for the receiver's number of ticks "
 
 	^ 5
+]
+
+{ #category : #accessing }
+MLR2ScatterPlotViz >> graphBuilderMetrics [
+	" Answer the receiver's metrics "
+	
+	^ self graphBuilder metrics
 ]
 
 { #category : #accessing }
@@ -91,17 +136,18 @@ MLR2ScatterPlotViz >> initializeGraphColors [
 	shape := self graphBuilder shape.
 	shape circle
 		size: 3.5;
-		color: [ :a | self colorDictionary at: a last ].
+		color: [ :a | self colorAt: a last ].
 ]
 
 { #category : #initialization }
 MLR2ScatterPlotViz >> initializeGraphMetrics [
+	" Private - Discard last column from receiver's data frame. Set the grpah builder metrics "
 
-	self graphBuilder metrics
-		at: 'Sepal length' put: #first;
-		at: 'Sepal width' put: #second;
-		at: 'Petal length' put: #third; 
-		at: 'Petal width' put: #fourth.
+	self dfColumnNames allButLast doWithIndex: [ : colName : index | 
+		self graphBuilderMetrics 
+			at: colName 
+			put: (self numberToSelectorMapAt: index) ].
+
 
 	
 ]
@@ -124,9 +170,12 @@ MLR2ScatterPlotViz >> initializeLegendBuilder [
 	self legendBuilder 
 		view: self graphBuilder view;
 		addText: self legendTitle.
-	
-	self colorDictionary keysDo: [ :k | 
-		self legendBuilder addColor: (self colorDictionary at: k) text: 'Iris ', k ].
+
+	self colors keysDo: [ : key | 
+		self legendBuilder 
+			addColor: (self colorAt: key) 
+			text: 'Iris ', key ].
+
 	self legendBuilder build.
 ]
 
@@ -135,13 +184,24 @@ MLR2ScatterPlotViz >> initializeWithDataFrame: aDataFrame [
 	" Private - Initialize the receiver's internal state using data points in aDataFrame "
 
 	self graphBuilder: RTScatterplotMatrix new. 
-	self graphObjects: aDataFrame asArrayOfRows.
+	self dataFrame: aDataFrame.
+	self graphObjects: self dataFrame asArrayOfRows.
 	self 	
 		initializeGraphAxis;
 		initializeGraphShape;
 		initializeGraphColors;
 		initializeGraphMetrics;
 		initializeLegendBuilder.
+]
+
+{ #category : #accessing }
+MLR2ScatterPlotViz >> k [
+	^ k
+]
+
+{ #category : #accessing }
+MLR2ScatterPlotViz >> k: anObject [
+	k := anObject
 ]
 
 { #category : #accessing }
@@ -158,6 +218,19 @@ MLR2ScatterPlotViz >> numberOfTicks [
 	
 	^ numberOfTicks
 		ifNil: [ numberOfTicks := self defaultNumberOfTicks ]
+]
+
+{ #category : #private }
+MLR2ScatterPlotViz >> numberToSelectorMapAt: aNumber [
+	" Private - There should be an easier way to do this "
+
+	^  { 
+		1 -> #first .
+		2 -> #second .
+		3 -> #third .
+		4 -> #fourth .
+		5 -> #fifth
+	 }	asDictionary at: aNumber
 ]
 
 { #category : #drawing }
