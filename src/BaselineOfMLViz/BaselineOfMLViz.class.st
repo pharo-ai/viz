@@ -12,10 +12,13 @@ BaselineOfMLViz >> baseline: spec [
 		spec
 			baseline: 'MLMetrics'
 			with: [ spec repository: 'github://pharo-ai/MLMetrics:main/src' ].
+		spec
+			baseline: 'Datasets'
+			with: [ spec repository: 'github://pharo-ai/Datasets' ].
 
 		"Packages"
 		spec 
-			package: 'MLViz' with: [ spec requires: #('MLMetrics') ];
+			package: 'MLViz' with: [ spec requires: #('MLMetrics' 'Datasets') ];
 			package: 'MLViz-Tests' with: [ spec requires: #('MLViz') ].
 			
 		self 
