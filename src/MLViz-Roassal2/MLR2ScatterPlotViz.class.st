@@ -24,14 +24,14 @@ MLR2ScatterPlotViz class >> example02 [
 	<example>
 	
 	MLR2ScatterPlotViz 
-		plot: Datasets loadIris 
-		k: 1
+		plot: Datasets loadIris
 ]
 
 { #category : #'instance creation' }
 MLR2ScatterPlotViz class >> plot: aDataFrame [
 
 	^ self new
+		k: 1;
 		initializeWithDataFrame: aDataFrame;
 		plot
 ]
@@ -166,7 +166,10 @@ MLR2ScatterPlotViz >> initializeGraphShape [
 
 { #category : #initialization }
 MLR2ScatterPlotViz >> initializeLegendBuilder [
+	" Set the receiver's legend. If we are just exploring the points cloud (k = 1) then omit legend "
 
+	self k = 1
+		ifTrue: [ ^ self ].
 	self legendBuilder 
 		view: self graphBuilder view;
 		addText: self legendTitle.
@@ -174,7 +177,7 @@ MLR2ScatterPlotViz >> initializeLegendBuilder [
 	self colors keysDo: [ : key | 
 		self legendBuilder 
 			addColor: (self colorAt: key) 
-			text: 'Iris ', key ].
+			text: key ].
 
 	self legendBuilder build.
 ]
