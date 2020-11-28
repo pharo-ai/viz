@@ -10,15 +10,13 @@ BaselineOfMLViz >> baseline: spec [
 	spec for: #common do: [	
 		"External dependencies"
 		spec
-			baseline: 'MLMetrics'
-			with: [ spec repository: 'github://pharo-ai/MLMetrics:main/src' ].
-		spec
-			baseline: 'Datasets'
-			with: [ spec repository: 'github://pharo-ai/Datasets' ].
+			baseline: 'MLMetrics' 				with: [ spec repository: 'github://pharo-ai/MLMetrics:main/src' ];
+			baseline: 'Datasets' 					with: [ spec repository: 'github://pharo-ai/Datasets' ];
+			baseline: 'ContainersOrderedSet'	with: [ spec repository: 'github://pharo-containers/Containers-OrderedSet/src' ].
 
 		"Packages"
 		spec 
-			package: 'MLViz' with: [ spec requires: #('MLMetrics' 'Datasets') ];
+			package: 'MLViz' with: [ spec requires: #('MLMetrics' 'Datasets' 'ContainersOrderedSet') ];
 			package: 'MLViz-Tests' with: [ spec requires: #('MLViz') ].
 			
 		self 
