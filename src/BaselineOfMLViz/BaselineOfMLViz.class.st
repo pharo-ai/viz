@@ -11,10 +11,26 @@ BaselineOfMLViz >> baseline: spec [
 		"External dependencies"
 		spec
 			baseline: 'MLMetrics'
-			with: [ spec repository: 'github://pharo-ai/MLMetrics/src' ].
-				
+			with: [ spec repository: 'github://pharo-ai/MLMetrics:main/src' ].
+
 		"Packages"
 		spec 
 			package: 'MLViz' with: [ spec requires: #('MLMetrics') ];
-			package: 'MLViz-Tests' with: [ spec requires: #('MLViz') ] ]
+			package: 'MLViz-Tests' with: [ spec requires: #('MLViz').
+				
+		spec 
+			group: 'Core' with: #('MLViz');
+			group: 'default' with: #('Core') ] ].
+		
+	"Roassal is natively in Pharo 9"
+	spec for: #'pharo8.x' do: [
+		spec 
+			baseline: 'Roassal2' 
+			with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ].
+			
+		spec
+			package: 'MLViz-Roassal2'
+			with: [ spec requires: #('MLViz' 'Roassal2') ]			
+	 ].
+
 ]
