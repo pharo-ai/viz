@@ -15,8 +15,8 @@ Metacello new
 
 ```smalltalk
 spec 
-   baseline: 'MLMetrics' 
-   with: [ spec repository: 'github://pharo-ai/MLMetrics:main/src' ].
+   baseline: 'MLViz' 
+   with: [ spec repository: 'github://pharo-ai/MLViz:main/src' ].
 ```
 
 # Usage
