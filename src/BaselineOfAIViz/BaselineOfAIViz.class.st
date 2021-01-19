@@ -16,7 +16,7 @@ BaselineOfAIViz >> baseline: spec [
 
 		"Packages"
 		spec 
-			package: 'AI-Viz' 						with: [ spec requires: #('AIMetrics' 'Datasets' 'ContainersOrderedSet') ].								
+			package: 'AI-Viz' 						with: [ spec requires: #('AI-Metrics' 'Datasets' 'ContainersOrderedSet') ].								
 			"package: 'AI-Viz-Tests' 				with: [ spec requires: #('AI-Viz')".
 			
 		self 
