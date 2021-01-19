@@ -1,32 +1,32 @@
 Class {
-	#name : #MLR2ScatterPlotViz,
-	#superclass : #MLR2ScatterViz,
+	#name : #AIR2ScatterPlotViz,
+	#superclass : #AIR2ScatterViz,
 	#instVars : [
 		'featureASelector',
 		'featureBSelector',
 		'data',
 		'colorMap'
 	],
-	#category : #'MLViz-Roassal2'
+	#category : #'AI-Viz-Roassal2'
 }
 
 { #category : #examples }
-MLR2ScatterPlotViz class >> example01 [ 
+AIR2ScatterPlotViz class >> example01 [ 
 	<example>
 	" The first column is the Sepal Length feature "
 	" The second column is the Sepal Width feature "
 
-	MLR2ScatterPlotViz 
+	AIR2ScatterPlotViz 
 		plot: Datasets loadIris
 ]
 
 { #category : #examples }
-MLR2ScatterPlotViz class >> example02 [
+AIR2ScatterPlotViz class >> example02 [
 	<example>
 	" The first column is the Sepal Length feature "
 	" The second column is the Sepal Width feature "
 
-	MLR2ScatterPlotViz new
+	AIR2ScatterPlotViz new
 		k: 3;	
 		featureASelector: #second;
 		featureBSelector: #third;
@@ -40,7 +40,7 @@ MLR2ScatterPlotViz class >> example02 [
 ]
 
 { #category : #'instance creation' }
-MLR2ScatterPlotViz class >> plot: aDataFrame [
+AIR2ScatterPlotViz class >> plot: aDataFrame [
 
 	^ self new
 		k: 1;
@@ -49,47 +49,47 @@ MLR2ScatterPlotViz class >> plot: aDataFrame [
 ]
 
 { #category : #accessing }
-MLR2ScatterPlotViz >> data [
+AIR2ScatterPlotViz >> data [
 	^ data
 		ifNil: [ data := RTData new ]
 ]
 
 { #category : #accessing }
-MLR2ScatterPlotViz >> data: anObject [
+AIR2ScatterPlotViz >> data: anObject [
 	data := anObject
 ]
 
 { #category : #accessing }
-MLR2ScatterPlotViz >> featureASelector [
+AIR2ScatterPlotViz >> featureASelector [
 	^ featureASelector
 		ifNil: [ featureASelector := #first ]
 ]
 
 { #category : #accessing }
-MLR2ScatterPlotViz >> featureASelector: anObject [
+AIR2ScatterPlotViz >> featureASelector: anObject [
 	featureASelector := anObject
 ]
 
 { #category : #accessing }
-MLR2ScatterPlotViz >> featureBSelector [
+AIR2ScatterPlotViz >> featureBSelector [
 	^ featureBSelector
 		ifNil: [ featureBSelector := #second ]
 ]
 
 { #category : #accessing }
-MLR2ScatterPlotViz >> featureBSelector: anObject [
+AIR2ScatterPlotViz >> featureBSelector: anObject [
 	featureBSelector := anObject
 ]
 
 { #category : #accessing }
-MLR2ScatterPlotViz >> graphObjects: aCollection [
+AIR2ScatterPlotViz >> graphObjects: aCollection [
 	" Assume aCollection is a collection of Array. Set the builder's objects "
 
 	self data points: (aCollection collect: #asArray)
 ]
 
 { #category : #initialization }
-MLR2ScatterPlotViz >> initializeColorMap [
+AIR2ScatterPlotViz >> initializeColorMap [
 	" Private - Set the receiver's colors of data points using colorMap <Collection> "
 
 	self colors associationsDo: [ : assoc | 
@@ -102,7 +102,7 @@ MLR2ScatterPlotViz >> initializeColorMap [
 ]
 
 { #category : #initialization }
-MLR2ScatterPlotViz >> initializeDataPoints [
+AIR2ScatterPlotViz >> initializeDataPoints [
 
 	self graphObjects: self dataFrame asArrayOfRows.
 	self data x: self featureASelector.
@@ -111,7 +111,7 @@ MLR2ScatterPlotViz >> initializeDataPoints [
 ]
 
 { #category : #initialization }
-MLR2ScatterPlotViz >> initializeGraphAxis [
+AIR2ScatterPlotViz >> initializeGraphAxis [
 	" Private - Setup the axis labels and color "
 
 	self graphBuilder axisY
@@ -123,7 +123,7 @@ MLR2ScatterPlotViz >> initializeGraphAxis [
 ]
 
 { #category : #initialization }
-MLR2ScatterPlotViz >> initializeWithDataFrame: aDataFrame [
+AIR2ScatterPlotViz >> initializeWithDataFrame: aDataFrame [
 	" Private - Initialize the receiver's internal state using data points in aDataFrame "
 
 	self graphBuilder: RTGrapher new. 

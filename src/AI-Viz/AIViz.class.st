@@ -15,7 +15,7 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #MLViz,
+	#name : #AIViz,
 	#superclass : #Object,
-	#category : #MLViz
+	#category : #'AI-Viz'
 }

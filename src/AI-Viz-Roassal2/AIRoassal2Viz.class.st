@@ -12,62 +12,62 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #MLRoassal2Viz,
-	#superclass : #MLViz,
+	#name : #AIRoassal2Viz,
+	#superclass : #AIViz,
 	#instVars : [
 		'legendBuilder',
 		'graphBuilder',
 		'legendTitle',
 		'dataFrame'
 	],
-	#category : #'MLViz-Roassal2'
+	#category : #'AI-Viz-Roassal2'
 }
 
 { #category : #'accessing - data' }
-MLRoassal2Viz >> dataFrame [
+AIRoassal2Viz >> dataFrame [
 	" Answer the receiver's data source, a <DataFrame> object "
 
 	^ dataFrame
 ]
 
 { #category : #'accessing - data' }
-MLRoassal2Viz >> dataFrame: anObject [
+AIRoassal2Viz >> dataFrame: anObject [
 	dataFrame := anObject
 ]
 
 { #category : #defaults }
-MLRoassal2Viz >> defaultLegendTitle [
+AIRoassal2Viz >> defaultLegendTitle [
 	" Answer a <String> with the text for the receiver's Legend box "
 	
 	^ 'Legend'
 ]
 
 { #category : #'accessing - data' }
-MLRoassal2Viz >> dfClusterNames [
+AIRoassal2Viz >> dfClusterNames [
 	" Answer a <Collection> of unique <String> elements representing the receiver's actual features "
 
 	^ (self dataFrame columnAt: self dataFrame numberOfColumns) asOrderedSet 
 ]
 
 { #category : #'accessing - data' }
-MLRoassal2Viz >> dfColumnNames [
+AIRoassal2Viz >> dfColumnNames [
 	" Answer a <Collection> of <String> representing the receiver's column names "
 
 	^ self dataFrame columnNames
 ]
 
 { #category : #accessing }
-MLRoassal2Viz >> graphBuilder [
+AIRoassal2Viz >> graphBuilder [
 	^ graphBuilder
 ]
 
 { #category : #accessing }
-MLRoassal2Viz >> graphBuilder: anObject [
+AIRoassal2Viz >> graphBuilder: anObject [
 	graphBuilder := anObject
 ]
 
 { #category : #accessing }
-MLRoassal2Viz >> legendBuilder [
+AIRoassal2Viz >> legendBuilder [
 	" Answer a <RTLegendBuilder> to describe receiver's elements "
 
 	^ legendBuilder
@@ -75,12 +75,12 @@ MLRoassal2Viz >> legendBuilder [
 ]
 
 { #category : #accessing }
-MLRoassal2Viz >> legendBuilder: anObject [
+AIRoassal2Viz >> legendBuilder: anObject [
 	legendBuilder := anObject
 ]
 
 { #category : #initialization }
-MLRoassal2Viz >> legendTitle [
+AIRoassal2Viz >> legendTitle [
 	" Answer a <String> with the receiver's legend title "
 
 	^ legendTitle
@@ -88,6 +88,6 @@ MLRoassal2Viz >> legendTitle [
 ]
 
 { #category : #accessing }
-MLRoassal2Viz >> legendTitle: anObject [
+AIRoassal2Viz >> legendTitle: anObject [
 	legendTitle := anObject
 ]

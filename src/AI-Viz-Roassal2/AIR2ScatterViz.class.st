@@ -1,22 +1,22 @@
 Class {
-	#name : #MLR2ScatterViz,
-	#superclass : #MLRoassal2Viz,
+	#name : #AIR2ScatterViz,
+	#superclass : #AIRoassal2Viz,
 	#instVars : [
 		'k',
 		'colors'
 	],
-	#category : #'MLViz-Roassal2'
+	#category : #'AI-Viz-Roassal2'
 }
 
 { #category : #accessing }
-MLR2ScatterViz >> colorAt: keyName [
+AIR2ScatterViz >> colorAt: keyName [
 	" Answer a <Color> in the receiver's colors at keyName "
 
 	^ self colors at: keyName
 ]
 
 { #category : #accessing }
-MLR2ScatterViz >> colors [
+AIR2ScatterViz >> colors [
 	" Answer a <Collection> of receiver's k <Color> instances "
 
 	^ colors
@@ -24,14 +24,14 @@ MLR2ScatterViz >> colors [
 ]
 
 { #category : #accessing }
-MLR2ScatterViz >> colors: aCollection [ 
+AIR2ScatterViz >> colors: aCollection [ 
 	" Set the receiver's colors to be aCollection "
 
 	colors := aCollection
 ]
 
 { #category : #defaults }
-MLR2ScatterViz >> defaultColors [
+AIR2ScatterViz >> defaultColors [
 	" Answer a <Collection> with defaults for the receiver's feature colors "
 
 	^ k = 1 
@@ -44,7 +44,7 @@ MLR2ScatterViz >> defaultColors [
 ]
 
 { #category : #initialization }
-MLR2ScatterViz >> initializeLegendBuilder [
+AIR2ScatterViz >> initializeLegendBuilder [
 	" Set the receiver's legend. If we are just exploring the points cloud (k = 1) then omit legend "
 
 	self k = 1
@@ -62,17 +62,17 @@ MLR2ScatterViz >> initializeLegendBuilder [
 ]
 
 { #category : #accessing }
-MLR2ScatterViz >> k [
+AIR2ScatterViz >> k [
 	^ k
 ]
 
 { #category : #accessing }
-MLR2ScatterViz >> k: anObject [
+AIR2ScatterViz >> k: anObject [
 	k := anObject
 ]
 
 { #category : #drawing }
-MLR2ScatterViz >> plot [
+AIR2ScatterViz >> plot [
 	" Open a new window with the receiver's rendered into it "
 
 	self graphBuilder open.

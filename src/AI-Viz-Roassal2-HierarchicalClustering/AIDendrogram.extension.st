@@ -1,7 +1,7 @@
-Extension { #name : #MLDendrogram }
+Extension { #name : #AIDendrogram }
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogram >> plotLineIn: view from: startPoint to: endPoint [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogram >> plotLineIn: view from: startPoint to: endPoint [
 
 	view canvas
 		addShape:
@@ -14,8 +14,8 @@ MLDendrogram >> plotLineIn: view from: startPoint to: endPoint [
 
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogram >> totalDepth [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogram >> totalDepth [
 
 	^ self isRoot
 		ifTrue: [ self nodeDepth * self depthFactor + self depthFactor ]
@@ -23,8 +23,8 @@ MLDendrogram >> totalDepth [
 
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogram >> withAllSubtrees [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogram >> withAllSubtrees [
 	| stream |
 
 	stream := Array new writeStream.

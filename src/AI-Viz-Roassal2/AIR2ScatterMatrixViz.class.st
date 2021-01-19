@@ -1,32 +1,32 @@
 Class {
-	#name : #MLR2ScatterMatrixViz,
-	#superclass : #MLR2ScatterViz,
+	#name : #AIR2ScatterMatrixViz,
+	#superclass : #AIR2ScatterViz,
 	#instVars : [
 		'labelConversionBlock',
 		'numberOfTicks'
 	],
-	#category : #'MLViz-Roassal2'
+	#category : #'AI-Viz-Roassal2'
 }
 
 { #category : #examples }
-MLR2ScatterMatrixViz class >> example01 [ 
+AIR2ScatterMatrixViz class >> example01 [ 
 	<example>
 	
-	MLR2ScatterMatrixViz 
+	AIR2ScatterMatrixViz 
 		plot: Datasets loadIris
 		k: 3
 ]
 
 { #category : #examples }
-MLR2ScatterMatrixViz class >> example02 [
+AIR2ScatterMatrixViz class >> example02 [
 	<example>
 	
-	MLR2ScatterMatrixViz 
+	AIR2ScatterMatrixViz 
 		plot: Datasets loadIris
 ]
 
 { #category : #'instance creation' }
-MLR2ScatterMatrixViz class >> plot: aDataFrame [
+AIR2ScatterMatrixViz class >> plot: aDataFrame [
 
 	^ self new
 		k: 1;
@@ -35,7 +35,7 @@ MLR2ScatterMatrixViz class >> plot: aDataFrame [
 ]
 
 { #category : #'instance creation' }
-MLR2ScatterMatrixViz class >> plot: aDataFrame k: predictedGroups [
+AIR2ScatterMatrixViz class >> plot: aDataFrame k: predictedGroups [
 
 	^ self new
 		k: predictedGroups;
@@ -44,7 +44,7 @@ MLR2ScatterMatrixViz class >> plot: aDataFrame k: predictedGroups [
 ]
 
 { #category : #defaults }
-MLR2ScatterMatrixViz >> defaultLabelConversionBlock [
+AIR2ScatterMatrixViz >> defaultLabelConversionBlock [
 	" Answer a <BlockClosure> which converts label to appropriate format for displaying into the receiver's canvas "
 
 	^ [ :n | 
@@ -55,28 +55,28 @@ MLR2ScatterMatrixViz >> defaultLabelConversionBlock [
 ]
 
 { #category : #defaults }
-MLR2ScatterMatrixViz >> defaultNumberOfTicks [
+AIR2ScatterMatrixViz >> defaultNumberOfTicks [
 	" Answer a <Number> with defaults for the receiver's number of ticks "
 
 	^ 5
 ]
 
 { #category : #accessing }
-MLR2ScatterMatrixViz >> graphBuilderMetrics [
+AIR2ScatterMatrixViz >> graphBuilderMetrics [
 	" Answer the receiver's metrics "
 	
 	^ self graphBuilder metrics
 ]
 
 { #category : #accessing }
-MLR2ScatterMatrixViz >> graphObjects: aCollection [
+AIR2ScatterMatrixViz >> graphObjects: aCollection [
 	" Assume aCollection is a collection of Array. Set the builder's objects "
 
 	self graphBuilder objects: (aCollection collect: #asArray)
 ]
 
 { #category : #initialization }
-MLR2ScatterMatrixViz >> initializeGraphAxis [
+AIR2ScatterMatrixViz >> initializeGraphAxis [
 
 	self graphBuilder axisX 
 		numberOfTicks: self numberOfTicks;
@@ -92,7 +92,7 @@ MLR2ScatterMatrixViz >> initializeGraphAxis [
 ]
 
 { #category : #initialization }
-MLR2ScatterMatrixViz >> initializeGraphColors [
+AIR2ScatterMatrixViz >> initializeGraphColors [
 
 	| shape |
 	
@@ -103,7 +103,7 @@ MLR2ScatterMatrixViz >> initializeGraphColors [
 ]
 
 { #category : #initialization }
-MLR2ScatterMatrixViz >> initializeGraphMetrics [
+AIR2ScatterMatrixViz >> initializeGraphMetrics [
 	" Private - Discard last column from receiver's data frame. Set the grpah builder metrics "
 
 	self dfColumnNames allButLast doWithIndex: [ : colName : index | 
@@ -116,7 +116,7 @@ MLR2ScatterMatrixViz >> initializeGraphMetrics [
 ]
 
 { #category : #initialization }
-MLR2ScatterMatrixViz >> initializeGraphShape [
+AIR2ScatterMatrixViz >> initializeGraphShape [
 
 	self graphBuilder lineShape: 
 		(RTStyledMultiLine new
@@ -128,7 +128,7 @@ MLR2ScatterMatrixViz >> initializeGraphShape [
 ]
 
 { #category : #initialization }
-MLR2ScatterMatrixViz >> initializeWithDataFrame: aDataFrame [
+AIR2ScatterMatrixViz >> initializeWithDataFrame: aDataFrame [
 	" Private - Initialize the receiver's internal state using data points in aDataFrame "
 
 	self graphBuilder: RTScatterplotMatrix new. 
@@ -143,7 +143,7 @@ MLR2ScatterMatrixViz >> initializeWithDataFrame: aDataFrame [
 ]
 
 { #category : #accessing }
-MLR2ScatterMatrixViz >> labelConversionBlock [
+AIR2ScatterMatrixViz >> labelConversionBlock [
 
 	^ labelConversionBlock
 		ifNil: [ labelConversionBlock := self defaultLabelConversionBlock  ]
@@ -151,7 +151,7 @@ MLR2ScatterMatrixViz >> labelConversionBlock [
 ]
 
 { #category : #initialization }
-MLR2ScatterMatrixViz >> numberOfTicks [
+AIR2ScatterMatrixViz >> numberOfTicks [
 	" Answer a <Number> with the number of ticks to be displayed "
 	
 	^ numberOfTicks
@@ -159,7 +159,7 @@ MLR2ScatterMatrixViz >> numberOfTicks [
 ]
 
 { #category : #private }
-MLR2ScatterMatrixViz >> numberToSelectorMapAt: aNumber [
+AIR2ScatterMatrixViz >> numberToSelectorMapAt: aNumber [
 	" Private - There should be an easier way to do this "
 
 	^  { 

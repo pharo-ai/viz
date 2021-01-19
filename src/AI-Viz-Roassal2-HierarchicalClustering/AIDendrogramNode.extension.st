@@ -1,7 +1,7 @@
-Extension { #name : #MLDendrogramNode }
+Extension { #name : #AIDendrogramNode }
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> inOrderDo: aBlock [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> inOrderDo: aBlock [
     " Visit the elements of the binary tree in order: left, then root, then right, applying a block to each element "
 
 	self left inOrderDo: aBlock.
@@ -9,16 +9,16 @@ MLDendrogramNode >> inOrderDo: aBlock [
 	self right inOrderDo: aBlock.
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> lineLengthThreshold [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> lineLengthThreshold [
 
 	^ self isRoot 
 		ifTrue: [ self max: 10 sum: self totalDepth ]
 		ifFalse: [ self parent lineLengthThreshold ]
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> max: xStart sum: aFloat [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> max: xStart sum: aFloat [
 
 	| lineLength toPoint1 |
 
@@ -34,22 +34,22 @@ MLDendrogramNode >> max: xStart sum: aFloat [
 		sum: aFloat)
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> nodeDepth [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> nodeDepth [
 	" Answer a <Float> with the receiver's depth, the max of each child plus own distance "
 	
 	^ (self left nodeDepth max: self right nodeDepth) + self threshold
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> nodeHeight [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> nodeHeight [
 	" Answer a <Number> with the receiver's height, the sum of each branch "
 	
 	^ self left nodeHeight + self right nodeHeight
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> plot [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> plot [
 
 	| scaling depthFactor heightFactor w  view |
 	
@@ -72,8 +72,8 @@ MLDendrogramNode >> plot [
 	view inspect
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> plot2 [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> plot2 [
 	" Intento unir RTGrapher con el dendrograma a mano usando RTData "
 
 	| scaling w height grapher view dataSet |
@@ -83,7 +83,6 @@ MLDendrogramNode >> plot2 [
 	view := grapher view.
 	
 	height := self nodeHeight * 20.
-	depth := self nodeDepth.
 
 	w := 1200.
 	scaling := (w - 150) asFloat / depth.
@@ -105,8 +104,8 @@ MLDendrogramNode >> plot2 [
 	view open.
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> plot4 [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> plot4 [
 	| view |
 
 	view := RTView new.
@@ -123,8 +122,8 @@ MLDendrogramNode >> plot4 [
 	view inspect
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> plot4At: aPoint scaling: aFloat view: aView [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> plot4At: aPoint scaling: aFloat view: aView [
 
 	| lHeightFactor rHeightFactor top bottom lineLength fromPoint1 toPoint2 y1 toPoint1 |
 
@@ -169,8 +168,8 @@ MLDendrogramNode >> plot4At: aPoint scaling: aFloat view: aView [
 		view: aView.
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> plotAt: aPoint scaling: aFloat view: aView [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> plotAt: aPoint scaling: aFloat view: aView [
 
 	| lHeightFactor rHeightFactor top bottom lineLength fromPoint1 toPoint2 y1 toPoint1 |
 
@@ -211,8 +210,8 @@ MLDendrogramNode >> plotAt: aPoint scaling: aFloat view: aView [
 		view: aView.
 ]
 
-{ #category : #'*MLViz-Roassal2' }
-MLDendrogramNode >> plotLeaves [
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> plotLeaves [
 
 	| view leaves |
 	
