@@ -6,7 +6,7 @@ Machine-Learning Visualization API for Pharo. Provides a higher-level interface 
 
 ```smalltalk
 Metacello new
-	baseline: 'MLViz';
+	baseline: 'AIViz';
 	repository: 'github://pharo-ai/viz/src';
 	load.
 ```
@@ -15,7 +15,7 @@ Metacello new
 
 ```smalltalk
 spec 
-   baseline: 'MLViz' 
+   baseline: 'AIViz' 
    with: [ spec repository: 'github://pharo-ai/viz/src' ].
 ```
 
