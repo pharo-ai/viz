@@ -16,7 +16,7 @@ BaselineOfAIViz >> baseline: spec [
 
 		"Packages"
 		spec 
-			package: 'AI-Viz' 						with: [ spec requires: #('AIMetrics' 'Datasets' 'ContainersOrderedSet') ].								
+			package: 'AI-Viz' 						with: [ spec requires: #('AIMetrics' 'Datasets' 'ContainersOrderedSet') ].				
 			"package: 'AI-Viz-Tests' 				with: [ spec requires: #('AI-Viz')".
 			
 		self 
@@ -24,7 +24,7 @@ BaselineOfAIViz >> baseline: spec [
 			baselineForPharo9: spec.
 				
 		spec 
-			group: 'Core' 							with: #('AI-Viz' 'AI-VizRoassal');
+			group: 'Core' 							with: #('AI-Viz' 'AIVizRoassal');
 			group: 'default' 						with: #('Core') ]
 
 
@@ -58,9 +58,9 @@ BaselineOfAIViz >> baselineForPharo9: spec [
 	"Roassal is natively in Pharo 9"
 	spec for: #'pharo9.x' do: [
 		spec
-			package: 'MLViz-Roassal3'
-			with: [ spec requires: #('MLViz') ].
+			package: 'AI-Viz-Roassal3'
+			with: [ spec requires: #('AIViz') ].
 					
-	spec group: 'MLVizRoassal' with: #('MLViz-Roassal3')	 ].	
+	spec group: 'AIVizRoassal' with: #('AI-Viz-Roassal3')	 ].	
 
 ]
