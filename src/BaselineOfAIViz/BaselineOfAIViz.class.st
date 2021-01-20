@@ -35,6 +35,8 @@ BaselineOfAIViz >> baselineForPharo8: spec [
 
 	spec for: #'pharo8.x' do: [
 		spec 
+			baseline: 'AIMetrics' 
+			with: [ spec repository: 'github://pharo-ai/metrics/src' ];
 			baseline: 'Roassal2' 
 			with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
 			baseline: 'AIHierarchicalClustering'
@@ -45,7 +47,7 @@ BaselineOfAIViz >> baselineForPharo8: spec [
 			package: 'AI-Viz-Roassal2-HierarchicalClustering' 	with: [ spec requires: #('AI-Viz-Roassal2' 'AI-Metrics' 'Datasets' 'ContainersOrderedSet' 'AIHierarchicalClustering') ].							
 						
 		spec 
-			group: 'AIVizRoassal' 	with: #('AIViz-Roassal2');
+			group: 'AIVizRoassal' 	with: #('AI-Viz-Roassal2');
 			group: 'AIVizRoassalHC'	with: #('AI-Viz-Roassal2-HierarchicalClustering')	 ].		
 
 ]
