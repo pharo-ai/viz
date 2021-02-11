@@ -10,6 +10,13 @@ AIDendrogramNode >> inOrderDo: aBlock [
 ]
 
 { #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> leftHeight [
+	" Answer a <Number> with the receiver's left children height "
+	
+	^ self left nodeHeight
+]
+
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
 AIDendrogramNode >> lineLengthThreshold [
 
 	^ self isRoot 
@@ -49,7 +56,7 @@ AIDendrogramNode >> nodeHeight [
 ]
 
 { #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
-AIDendrogramNode >> plotAt: aPoint scaling: aFloat view: aView [
+AIDendrogramNode >> plotAt: aPoint scaling: aFloat view: aView color: aColor [
 	" Private - Render the receiver's into aView using aPoint as starting point. 
 	Assuming an horizontal orientation, this method calculates the distance for 3 lines:
 		The vertical line from the receiver to the leaves.
@@ -58,52 +65,63 @@ AIDendrogramNode >> plotAt: aPoint scaling: aFloat view: aView [
 
 	| lHeightFactor rHeightFactor top bottom lineLength fromPoint1 toPoint2 y1 toPoint1 |
 
-	lHeightFactor := self left nodeHeight * 20.
-	rHeightFactor := self right nodeHeight * 20.
+	lHeightFactor := self leftHeight * 20.
+	rHeightFactor := self rightHeight * 20.
 	
 	top := aPoint y - (lHeightFactor + (rHeightFactor / 2)).
 	bottom := aPoint y + (lHeightFactor + (rHeightFactor / 2)).
 	
 	lineLength := (aFloat - self nodeDepth)"self threshold * aFloat".
 
-	fromPoint1 := (aPoint x @ (top + (lHeightFactor / 2))).
+	fromPoint1 := aPoint x @ (top + (lHeightFactor / 2)).
 	toPoint1 := (aPoint x + lineLength) @ (top + (lHeightFactor / 2)).
 
-	y1 := (aPoint x @ (bottom - (rHeightFactor / 2))).
+	y1 := aPoint x @ (bottom - (rHeightFactor / 2)).
 	toPoint2 := (aPoint x + lineLength) @ (bottom - (rHeightFactor / 2)).
-
-	" Render vertical line from this node to the leaves "
-	self plotLineIn: aView 
-		from: fromPoint1 
-		to: y1.
-
-	" Render horizontal line to the left item "
-	self left isLeaf ifTrue: [ toPoint1 := self lineLengthThreshold @ toPoint1 y. ].
-	self plotLineIn: aView 
-		from: fromPoint1
-		to: toPoint1.
-
-	" Render horizontal line to the right item "
-	self right isLeaf ifTrue: [ toPoint2 := self lineLengthThreshold @ toPoint2 y. ].
-	self plotLineIn: aView 
-		from: y1
-		to: toPoint2.
 
 	self left 
 		plotAt: toPoint1
 		scaling: aFloat 
-		view: aView.
+		view: aView
+		color: aColor.
 	self right
 		plotAt: toPoint2
 		scaling: aFloat 
-		view: aView.
+		view: aView
+		color: aColor.
+
+	" Render vertical line from this node to the leaves "
+	self 
+		plotLineIn: aView 
+		from: fromPoint1 
+		to: y1
+		color: aColor.
+
+	" Render horizontal line to the left item "
+	self left isLeaf 
+		ifTrue: [ toPoint1 := self lineLengthThreshold @ toPoint1 y ].
+	self 
+		plotLineIn: aView 
+		from: fromPoint1
+		to: toPoint1
+		color: aColor.
+
+	" Render horizontal line to the right item "
+	self right isLeaf 
+		ifTrue: [ toPoint2 := self lineLengthThreshold @ toPoint2 y ].
+	self plotLineIn: aView 
+		from: y1
+		to: toPoint2
+		color: aColor.
+
+
+
 ]
 
 { #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
 AIDendrogramNode >> plotDendrogram [
 	" Open a view of the receiver's.
-	Starting point to render the receiver using Roassal. Create a small line which is the root of the receiver's tree.
-	Then recursively process leaves. "
+	Starting point to render the receiver using Roassal. Create a small line which is the root of the receiver's tree. Then recursively process the leaves. "
 
 	| view |
 
@@ -111,11 +129,33 @@ AIDendrogramNode >> plotDendrogram [
 	self 
 		plotLineIn: view 
 		from:  0 @ (self heightFactor / 2) 
-		to: 10 @ (self heightFactor / 2).
+		to: 10 @ (self heightFactor / 2)
+		color: Color black.
 
 	self 
 		plotAt: 10 @ (self heightFactor / 2) 
 		scaling: self totalDepth
-		view: view.
+		view: view
+		color: Color black.
 	view inspect
+]
+
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> plotLineIn: view from: startPoint to: endPoint color: aColor [
+	" Add a line from startPoint to endPoint into view "
+
+	view canvas
+		addShape:
+			(TRLineShape new
+				from: startPoint;
+				to: endPoint;
+				color: aColor;
+				yourself).
+]
+
+{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+AIDendrogramNode >> rightHeight [
+	" Answer a <Number> with the receiver's right children height "
+	
+	^ self right nodeHeight
 ]

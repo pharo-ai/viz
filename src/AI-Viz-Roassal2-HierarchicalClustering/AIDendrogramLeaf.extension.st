@@ -30,7 +30,7 @@ AIDendrogramLeaf >> nodeHeight [
 ]
 
 { #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
-AIDendrogramLeaf >> plotAt: aPoint scaling: aFloat view: aCanvas [
+AIDendrogramLeaf >> plotAt: aPoint scaling: aFloat view: aCanvas color: aColor [
 	" Rrender the receiver's element (commonly a String) wrapped into a label with the receiver as a Roassal element "
 	| label |
 
@@ -40,4 +40,6 @@ AIDendrogramLeaf >> plotAt: aPoint scaling: aFloat view: aCanvas [
 	aCanvas add: label.
 	label @ RTDraggable.
 	label translateTo: (aPoint x + self totalDepth) @ aPoint y.
+	^ aColor
+
 ]
