@@ -10,6 +10,15 @@ Class {
 	#category : #'AI-Viz-Roassal2'
 }
 
+{ #category : #'instance creation' }
+AIR2DendrogramViz class >> from: aClusterEngine [
+	" Answer a new instance of the receiver using dendrogram data from aClusterEngine "
+
+	^ self new 
+		initializeFrom: aClusterEngine;
+		yourself
+]
+
 { #category : #accessing }
 AIR2DendrogramViz >> colorThreshold: aNumber [
 	" Set the receiver's threshold at which the 

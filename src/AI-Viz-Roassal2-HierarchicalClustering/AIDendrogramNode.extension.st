@@ -150,6 +150,7 @@ AIDendrogramNode >> plotLineIn: view from: startPoint to: endPoint color: aColor
 				from: startPoint;
 				to: endPoint;
 				color: aColor;
+				width: 5;
 				yourself).
 ]
 
