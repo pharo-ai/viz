@@ -11,12 +11,12 @@ BaselineOfAIViz >> baseline: spec [
 		"External dependencies"
 		spec
 			baseline: 'AIMetrics' 						with: [ spec repository: 'github://pharo-ai/metrics/src' ];
-			baseline: 'Datasets' 							with: [ spec repository: 'github://pharo-ai/Datasets' ];
+			baseline: 'AIDatasets' 						with: [ spec repository: 'github://pharo-ai/Datasets' ];
 			baseline: 'ContainersOrderedSet'			with: [ spec repository: 'github://pharo-containers/Containers-OrderedSet/src' ].
 
 		"Packages"
 		spec 
-			package: 'AI-Viz' 						with: [ spec requires: #('AIMetrics' 'Datasets' 'ContainersOrderedSet') ].				
+			package: 'AI-Viz' 						with: [ spec requires: #('AIMetrics' 'AIDatasets' 'ContainersOrderedSet') ].				
 			"package: 'AI-Viz-Tests' 				with: [ spec requires: #('AI-Viz')".
 			
 		self 
@@ -44,7 +44,7 @@ BaselineOfAIViz >> baselineForPharo8: spec [
 			
 		spec
 			package: 'AI-Viz-Roassal2'									with: [ spec requires: #('AI-Viz' 'Roassal2') ];
-			package: 'AI-Viz-Roassal2-HierarchicalClustering' 	with: [ spec requires: #('AI-Viz-Roassal2' 'AIMetrics' 'Datasets' 'ContainersOrderedSet' 'AIHierarchicalClustering') ].							
+			package: 'AI-Viz-Roassal2-HierarchicalClustering' 	with: [ spec requires: #('AI-Viz-Roassal2' 'AIMetrics' 'AIDatasets' 'ContainersOrderedSet' 'AIHierarchicalClustering') ].							
 						
 		spec 
 			group: 'AIVizRoassal' 	with: #('AI-Viz-Roassal2');

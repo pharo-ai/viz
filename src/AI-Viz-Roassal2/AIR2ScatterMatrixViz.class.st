@@ -13,7 +13,7 @@ AIR2ScatterMatrixViz class >> example01 [
 	<example>
 	
 	AIR2ScatterMatrixViz 
-		plot: Datasets loadIris
+		plot: AIDatasets loadIris
 		k: 3
 ]
 
@@ -22,7 +22,7 @@ AIR2ScatterMatrixViz class >> example02 [
 	<example>
 	
 	AIR2ScatterMatrixViz 
-		plot: Datasets loadIris
+		plot: AIDatasets loadIris
 ]
 
 { #category : #'instance creation' }

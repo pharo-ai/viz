@@ -17,7 +17,7 @@ AIR2ScatterPlotViz class >> example01 [
 	" The second column is the Sepal Width feature "
 
 	AIR2ScatterPlotViz 
-		plot: Datasets loadIris
+		plot: AIDatasets loadIris
 ]
 
 { #category : #examples }
@@ -34,7 +34,7 @@ AIR2ScatterPlotViz class >> example02 [
 			'virginica' 	-> Color blue .
 			'versicolor'	-> Color green .
 			'setosa' 		-> Color red } asDictionary;
-		initializeWithDataFrame: Datasets loadIris;
+		initializeWithDataFrame: AIDatasets loadIris;
 		plot.
 
 ]
