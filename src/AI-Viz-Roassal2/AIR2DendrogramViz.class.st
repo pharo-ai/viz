@@ -4,10 +4,20 @@ Class {
 	#instVars : [
 		'orientation',
 		'leafRotation',
-		'leafFontSize'
+		'leafFontSize',
+		'leafColor'
 	],
 	#category : #'AI-Viz-Roassal2'
 }
+
+{ #category : #'instance creation' }
+AIR2DendrogramViz class >> from: aClusterEngine [
+	" Answer a new instance of the receiver using dendrogram data from aClusterEngine "
+
+	^ self new 
+		initializeFrom: aClusterEngine;
+		yourself
+]
 
 { #category : #accessing }
 AIR2DendrogramViz >> colorThreshold: aNumber [
@@ -18,10 +28,28 @@ AIR2DendrogramViz >> colorThreshold: aNumber [
 ]
 
 { #category : #defaults }
+AIR2DendrogramViz >> defaultLeafRotation [
+	" Answer a <Symbol> used to set the default rotation of the receiver's leaves "
+
+	self shouldBeImplemented
+]
+
+{ #category : #defaults }
 AIR2DendrogramViz >> defaultOrientation [
 	" Answer a <Symbol> used to set the default direction of the receiver "
 
 	^ #top
+]
+
+{ #category : #accessing }
+AIR2DendrogramViz >> leafColor [
+	^ leafColor
+		ifNil: [ leafColor := Color black ]
+]
+
+{ #category : #accessing }
+AIR2DendrogramViz >> leafColor: anObject [
+	leafColor := anObject
 ]
 
 { #category : #accessing }
@@ -41,6 +69,7 @@ AIR2DendrogramViz >> leafRotation [
 	" Answer a <Number> representing an angle of the receiver's leaf labels rotation "
 
 	^ leafRotation
+		ifNil: [ leafRotation := self defaultLeafRotation ]
 ]
 
 { #category : #accessing }
@@ -62,6 +91,7 @@ AIR2DendrogramViz >> orientation [
 AIR2DendrogramViz >> rotate [
 	" Rotate the receiver to the next orientation clock-wise "
 
+	self shouldBeImplemented
 ]
 
 { #category : #accessing }
