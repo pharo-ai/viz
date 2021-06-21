@@ -59,7 +59,7 @@ BaselineOfAIViz >> baselineForPharo9: spec [
 	spec for: #'pharo9.x' do: [
 		spec
 			package: 'AI-Viz-Roassal3'
-			with: [ spec requires: #('AIViz') ].
+			with: [ spec requires: #('AI-Viz') ].
 					
 	spec group: 'AIVizRoassal' with: #('AI-Viz-Roassal3')	 ].	
 
