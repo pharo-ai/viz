@@ -56,7 +56,7 @@ BaselineOfAIViz >> baselineForPharo8: spec [
 BaselineOfAIViz >> baselineForPharo9: spec [
 
 	"Roassal is natively in Pharo 9"
-	spec for: #'pharo9.x' do: [
+	spec for: #(#'pharo9.x' #'pharo10.x') do: [
 		spec
 			package: 'AI-Viz-Roassal3'
 			with: [ spec requires: #('AI-Viz') ].
