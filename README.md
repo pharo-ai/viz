@@ -5,10 +5,11 @@ Machine-Learning Visualization API for Pharo. Provides a higher-level interface 
 # Installation
 
 ```smalltalk
-Metacello new
-	baseline: 'AIViz';
-	repository: 'github://pharo-ai/viz/src';
-	load.
+EpMonitor disableDuring: [
+	Metacello new
+		baseline: 'AIViz';
+		repository: 'github://pharo-ai/viz/src';
+		load ]
 ```
 
 # If you want to depend on it
