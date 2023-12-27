@@ -98,9 +98,10 @@ AIDendrogramNode >> plotDendrogram [
 
 	thresholdScaling := self thresholdHorizontalScaling.
 
-	"first horizontal line: root"
-	fromPoint := (self thresholdPosition: thresholdScaling) @ (self heightFactor / 2).
-	toPoint := (fromPoint x + self baselineLength) @ (fromPoint y).
+	"first horizontal line: root
+	We make it half the length of a normal level"
+	fromPoint := (self thresholdPosition: thresholdScaling) @ 0.
+	toPoint := (fromPoint x + (self baselineLength / 2)) @ (fromPoint y).
 
 	self 
 		plotLineIn: canvas 

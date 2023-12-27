@@ -17,7 +17,8 @@ AIDendrogram >> baselineLength [
 
 { #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogram >> minimalLeafLine [
-	"minimal length of a line to a leaf (threshold of the node close to 0)"
+	"minimal length of a line to a leaf (threshold of the nodes close to 0 for which
+	 #thresholdPosition: would return 0)"
 
 	^5
 ]
