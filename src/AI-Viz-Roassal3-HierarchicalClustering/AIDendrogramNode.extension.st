@@ -1,6 +1,6 @@
-Extension { #name : #AIDendrogramNode }
+Extension { #name : 'AIDendrogramNode' }
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramNode >> inOrderDo: aBlock [
     " Visit the elements of the binary tree in order: left, then root, then right, applying a block to each element "
 
@@ -9,28 +9,28 @@ AIDendrogramNode >> inOrderDo: aBlock [
 	self right inOrderDo: aBlock.
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramNode >> leftHeight [
 	" Answer a <Number> with the receiver's left children height "
 	
 	^ self left nodeHeight
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramNode >> nodeDepth [
 	" Answer a <Float> with the receiver's depth, the max of each child plus own distance "
 	
 	^ (self left nodeDepth max: self right nodeDepth) + 1
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramNode >> nodeHeight [
 	" Answer a <Number> with the receiver's height, the sum of each branch "
 	
 	^ self left nodeHeight + self right nodeHeight
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramNode >> plotAt: aPoint scaling: thresholdHorizontalScaling view: aCanvas color: aColor [
 	" Private - Render the receiver's into aView using aPoint as starting point. 
 	Assuming an horizontal orientation, this method calculates the distance for 3 lines:
@@ -86,7 +86,7 @@ AIDendrogramNode >> plotAt: aPoint scaling: thresholdHorizontalScaling view: aCa
 
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramNode >> plotDendrogram [
 	" Open a view of the receiver's.
 	Starting point to render the receiver using Roassal. Create a small line which is the root of the receiver's tree. Then recursively process the leaves. "
@@ -117,7 +117,7 @@ AIDendrogramNode >> plotDendrogram [
 	canvas inspect
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramNode >> plotLineIn: view from: startPoint to: endPoint color: aColor [
 	"Add a line from startPoint to endPoint into view "
 
@@ -131,14 +131,14 @@ AIDendrogramNode >> plotLineIn: view from: startPoint to: endPoint color: aColor
 				yourself).
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramNode >> rightHeight [
 	" Answer a <Number> with the receiver's right children height "
 	
 	^ self right nodeHeight
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramNode >> thresholdPosition: thresholdScaling [
 	"X position depends on threshold of the node
 	 -5 to have a minimal space before all leaves (all leaves are at 0)"
