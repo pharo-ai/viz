@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfAIViz,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfAIViz
+	#name : 'BaselineOfAIViz',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfAIViz',
+	#package : 'BaselineOfAIViz'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfAIViz >> baseline: spec [
 	<baseline>
 	spec for: #common do: [	
@@ -30,7 +31,7 @@ BaselineOfAIViz >> baseline: spec [
 
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfAIViz >> baselineForPharo8: spec [
 
 	spec for: #'pharo8.x' do: [
@@ -52,11 +53,11 @@ BaselineOfAIViz >> baselineForPharo8: spec [
 
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfAIViz >> baselineForPharo9: spec [
 
 	"Roassal is natively in Pharo 9"
-	spec for: #(#'pharo9.x' #'pharo10.x') do: [
+	spec for: #(#'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x' #'pharo13.x' #'pharo14.x' ) do: [
 		spec
 			package: 'AI-Viz-Roassal3'
 			with: [ spec requires: #('AI-Viz') ].
