@@ -1,13 +1,13 @@
-Extension { #name : #AIDendrogram }
+Extension { #name : 'AIDendrogram' }
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogram >> baselineHeight [
 	"height of one line in the dendrogram plot"
 
 	^20
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogram >> baselineLength [
 	"length between two 'levels' in the dendrogram plot
 	 Actual horizontal position of a level also depends on its #threshold"
@@ -15,7 +15,7 @@ AIDendrogram >> baselineLength [
 	^30
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogram >> minimalLeafLine [
 	"minimal length of a line to a leaf (threshold of the nodes close to 0 for which
 	 #thresholdPosition: would return 0)"
@@ -23,13 +23,13 @@ AIDendrogram >> minimalLeafLine [
 	^5
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogram >> nodeDepth [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogram >> thresholdHorizontalScaling [
 	"computes the scale between a DendrogramNode's threshold and its horizontal position in the plot
 	 - The total width of the plot is: max numer of levels * #baselineLength
@@ -45,7 +45,7 @@ AIDendrogram >> thresholdHorizontalScaling [
 
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogram >> thresholdPosition: thresholdScaling [
 
 	self subclassResponsibility

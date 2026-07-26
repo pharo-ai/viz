@@ -1,13 +1,13 @@
-Extension { #name : #AIDendrogramLeaf }
+Extension { #name : 'AIDendrogramLeaf' }
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramLeaf >> inOrderDo: aBlock [
     " Apply a block to the receiver's element "
 
 	^ aBlock value: self.
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramLeaf >> max: xStart sum: aFloat [
 
 	^ xStart
@@ -15,21 +15,21 @@ AIDendrogramLeaf >> max: xStart sum: aFloat [
 
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramLeaf >> nodeDepth [
 	" Answer a <Float> with the receiver's depth "
 	
 	^ 1
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramLeaf >> nodeHeight [
 	" Answer a <Number> with the receiver's height "
 	
 	^ 1
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramLeaf >> plotAt: aPoint scaling: aFloat view: aCanvas color: aColor [
 	" Rrender the receiver's element (commonly a String) wrapped into a label "
 
@@ -44,7 +44,7 @@ AIDendrogramLeaf >> plotAt: aPoint scaling: aFloat view: aCanvas color: aColor [
 	^ aPoint
 ]
 
-{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
+{ #category : '*AI-Viz-Roassal3-HierarchicalClustering' }
 AIDendrogramLeaf >> thresholdPosition: thresholdScaling [
 
 	^0
