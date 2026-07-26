@@ -20,7 +20,7 @@ BaselineOfAIViz >> baseline: spec [
 			baselineForPharo9: spec.
 				
 		spec 
-			group: 'Core' 							with: #('AI-Viz' 'AIVizRoassal');
+			group: 'Core' 							with: #('AIVizRoassal');
 			group: 'default' 						with: #('Core') ]
 
 
