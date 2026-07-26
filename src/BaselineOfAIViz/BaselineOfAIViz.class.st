@@ -50,16 +50,13 @@ BaselineOfAIViz >> baselineForPharo8: spec [
 
 { #category : 'baselines' }
 BaselineOfAIViz >> baselineForPharo9: spec [
-
 	"Roassal is natively in Pharo 9"
-	spec for: #(#'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x' #'pharo13.x' #'pharo14.x' ) do: [
-		spec
-			package: 'AI-Viz-Roassal3'
-			with: [ spec requires: #('AIMetrics' 'AIDatasets' 'ContainersOrderedSet') ];
-			
-			package: 'AI-Viz-Roassal3-HierarchicalClustering'
-			with: [ spec requires: #('AI-HierarchicalClustering') ].
-					
-	spec group: 'AIVizRoassal' with: #('AI-Viz-Roassal3')	 ].	
 
+	spec for: #( #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x' #'pharo13.x' #'pharo14.x' ) do: [
+			spec
+				baseline: 'AIHierarchicalClustering' with: [ spec repository: 'github://pharo-ai/hierarchical-clustering/src' ];
+				package: 'AI-Viz-Roassal3' with: [ spec requires: #( 'AIMetrics' 'AIDatasets' 'ContainersOrderedSet' ) ];
+				package: 'AI-Viz-Roassal3-HierarchicalClustering' with: [ spec requires: #( 'AI-HierarchicalClustering' ) ].
+
+			spec group: 'AIVizRoassal' with: #( 'AI-Viz-Roassal3' ) ]
 ]
