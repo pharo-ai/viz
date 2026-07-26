@@ -15,11 +15,6 @@ BaselineOfAIViz >> baseline: spec [
 			baseline: 'AIDatasets' 						with: [ spec repository: 'github://pharo-ai/Datasets' ];
 			baseline: 'ContainersOrderedSet'			with: [ spec repository: 'github://pharo-containers/Containers-OrderedSet/src' ].
 
-		"Packages"
-		spec 
-			package: 'AI-Viz' 						with: [ spec requires: #('AIMetrics' 'AIDatasets' 'ContainersOrderedSet') ].				
-			"package: 'AI-Viz-Tests' 				with: [ spec requires: #('AI-Viz')".
-			
 		self 
 			baselineForPharo8: spec;
 			baselineForPharo9: spec.
@@ -60,7 +55,7 @@ BaselineOfAIViz >> baselineForPharo9: spec [
 	spec for: #(#'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x' #'pharo13.x' #'pharo14.x' ) do: [
 		spec
 			package: 'AI-Viz-Roassal3'
-			with: [ spec requires: #('AI-Viz') ].
+			with: [ spec requires: #('AI-Viz' 'AIMetrics' 'AIDatasets' 'ContainersOrderedSet') ].
 					
 	spec group: 'AIVizRoassal' with: #('AI-Viz-Roassal3')	 ].	
 
