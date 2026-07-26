@@ -1,6 +1,6 @@
 Extension { #name : #AIClusterEngine }
 
-{ #category : #'*AI-Viz-Roassal2-HierarchicalClustering' }
+{ #category : #'*AI-Viz-Roassal3-HierarchicalClustering' }
 AIClusterEngine >> plotDendrogram [
 	" Plot the receiver as dendrogram figure "
 
